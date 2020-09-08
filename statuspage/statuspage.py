@@ -42,10 +42,10 @@ TEMPLATES = [
 ]
 
 DEFAULT_CONFIG = {
-    "footer": "Status page hosted by GitHub, generated with <a href='https://github.com/jayfk/statuspage'>jayfk/statuspage</a>",
-    "logo": "https://raw.githubusercontent.com/jayfk/statuspage/master/template/logo.png",
+    "footer": "Hosted by GitHub",
+    "logo": "https://res.haocen.io/status-logo.png",
     "title": "Status",
-    "favicon": "https://raw.githubusercontent.com/jayfk/statuspage/master/template/favicon.png"
+    "favicon": "https://res.haocen.io/status-logo.png"
 }
 
 
