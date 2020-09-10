@@ -31,7 +31,7 @@
 			<section class="container" id="main">
 				{% if not panels %}
 					<div class="panel operational" data-l10n-id="systems-operational">
-						All Systems operational.
+						All Systems Operational
 					</div>
 				{% else %}
 					{% for severity, systems in panels.items() if systems %}
@@ -75,7 +75,7 @@
 					</div>
 					{% endfor %}
 				{% else %}
-					<em data-l10n-id="no.incidents">No incidents in the past 90 days.</em>
+					<em data-l10n-id="no-incidents">No incidents in the past 90 days.</em>
 				{% endif %}
 			</section>
 
