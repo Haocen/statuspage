@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+# Create a new action from GitHub UI or copy this file to [yourrepo]/.github/workflow/generate.yml
+
+# You need to set STATUS_PAGE_GITHUB_TOKEN in your repo - settings - secrets
+# Create personal access token at https://github.com/settings/tokens/
+# Grant repo - Full control of private repositories to this token
+# Default GitHub action token secrets.GITHUB_TOKEN might not work, you have been warned
+
+name: Generate Status Page
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the gh-pages branch
+on:
+  issues:
+    types: [opened, edited, closed, deleted, reopened, labeled, unlabled]
+  issue_comment:
+    types: [created, edited, deleted]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "generate"
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Status Page with Docker
+        continue-on-error: true
+        uses: docker://docker.io/haocen/statuspage
+        with:
+          args: |
+            python /statuspage/statuspage.py update --name=status --token=${{ secrets.STATUS_PAGE_GITHUB_TOKEN }}
