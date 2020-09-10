@@ -27,4 +27,4 @@ jobs:
         uses: docker://docker.io/haocen/statuspage
         with:
           args: |
-            python /statuspage/statuspage.py update --name=status --token=${{ secrets.STATUS_PAGE_GITHUB_TOKEN }}
+            update --name=status --token=${{ secrets.STATUS_PAGE_GITHUB_TOKEN }}

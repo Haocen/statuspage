@@ -7,4 +7,5 @@ RUN pip install -r /statuspage/requirements.txt
 
 WORKDIR /statuspage
 
-CMD [ "python", "statuspage.py"]
+ENTRYPOINT [ "python",  "/statuspage/statuspage.py" ]
+CMD [ "--help"]
