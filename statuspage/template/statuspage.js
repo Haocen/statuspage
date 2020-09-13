@@ -709,4 +709,45 @@ doy:4}}),kg.defineLocale("zh-tw",{months:"一月_二月_三月_四月_五月_六
       document.documentElement.lang = document.webL10n.getLanguage();
       document.documentElement.dir = document.webL10n.getDirection();
     }, false);
+
+    window.addEventListener(
+      'load',
+      function() {
+        const setSystemLabelsScrollable = function() {
+          document.querySelectorAll('.system-wrapper').forEach(
+            function(systemWrapperElement) {
+              let lastBoundingClientRectY = null;
+              if (systemWrapperElement instanceof HTMLElement) {
+                for (const systemLabelElement of systemWrapperElement.querySelectorAll('.system.label')) {
+                  if (systemLabelElement instanceof HTMLElement) {
+                    const currentBoundingClientRectY = systemLabelElement.getBoundingClientRect().y;
+                    if (lastBoundingClientRectY === null) {
+                      lastBoundingClientRectY = currentBoundingClientRectY;
+                    }
+                    if (lastBoundingClientRectY !== currentBoundingClientRectY) {
+                      systemWrapperElement.classList.add('scrollable');
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+          );
+        };
+        setSystemLabelsScrollable();
+        window.addEventListener(
+          'resize',
+          setSystemLabelsScrollable,
+          {
+            capture: false,
+            passive: true
+          }
+        );
+      },
+      {
+        capture: false,
+        once: true,
+        passive: true
+      }
+    );
 })();
