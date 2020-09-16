@@ -885,6 +885,8 @@ h4 {
   display: flex;
   padding-left: 5%;
   float: right;
+  /* hide scrollbar for Firefox on windows */
+  scrollbar-width: none;
 }
 
 .system-wrapper.scrollable .inner-system-wrapper::after {
@@ -892,6 +894,11 @@ h4 {
   padding-right: 5%;
   position: relative;
   display: inline-block;
+}
+
+/* hide scrollbar for webkit based browsers on windows */
+.system-wrapper.scrollable .inner-system-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
